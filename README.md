@@ -1,25 +1,23 @@
-# 🎹 Keyboard Tester
+# 🎮 Gamepad Tester
 
-Un outil web complet pour tester tous les touches de votre clavier physique. Détecte les problèmes de double frappe (chattering), affiche l'état des touches de verrouillage, et supporte plusieurs layouts.
+Un outil web pour tester toutes les touches et sticks de votre manette (gamepad). Vérifie rapidement les boutons, les gâchettes analogiques et les axes des sticks avec un retour visuel immédiat.
 
 ## ✨ Fonctionnalités
 
-- **Test complet du clavier** : 105+ touches incluant pavé numérique, touches fonction, et navigation
-- **Détection AltGr** : Différencie correctement AltGr de Ctrl+Alt (avec gestion du fantôme ControlLeft)
-- **Détection de chattering** : Alerte en cas de double frappe involontaire (< 50ms)
-- **LED virtuelles** : Affichage de l'état Caps Lock, Num Lock, Scroll Lock
-- **Support multi-layouts** : AZERTY (FR), QWERTY (US/UK), BÉPO, AZERTY Apple
-- **Statistiques en temps réel** : Compteur de touches testées
-- **100% offline** : Aucune dépendance externe, fonctionne sans connexion
-- **Interface responsive** : Tout visible sans scroll
+- **Test complet des boutons** : A/B/X/Y, D-Pad, start/menu, View, guide, LB/RB, LT/RT, L3/R3
+- **Sticks analogiques** : Visualisation en temps réel du déplacement des axes
+- **Gâchettes analogiques** : Détection progressive des LT/RT
+- **Statistiques en temps réel** : Compteur des contrôles testés
+- **100% offline** : Aucune dépendance externe
+- **Interface responsive** : Mise en page adaptée aux différentes tailles d'écran
 
 ## 🚀 Installation
 
 Aucune installation nécessaire ! Clonez simplement le dépôt et ouvrez `index.html` dans votre navigateur.
 
 ```bash
-git clone https://github.com/votre-username/keyboard-tester.git
-cd keyboard-tester
+git clone https://github.com/votre-username/gamepad-tester.git
+cd gamepad-tester
 # Ouvrez index.html dans votre navigateur préféré
 ```
 
@@ -27,36 +25,27 @@ Ou téléchargez directement et double-cliquez sur `index.html`.
 
 ## 📖 Utilisation
 
-1. Ouvrez `index.html` dans votre navigateur
-2. Sélectionnez votre layout de clavier (optionnel)
-3. Appuyez sur chaque touche de votre clavier
-4. Les touches testées deviennent bleues
+1. Connectez votre gamepad à l'ordinateur
+2. Ouvrez `index.html` dans votre navigateur
+3. Appuyez sur chaque bouton et déplacez les sticks
+4. Les contrôles testés s'illuminent et restent marqués
 5. Le compteur se met à jour en temps réel
 6. Cliquez sur "Réinitialiser" pour recommencer
-
-### Détection de problèmes
-
-- **Chattering** : Si une touche produit des doubles frappes involontaires, une alerte modale apparaît
-- **LED** : Les voyants Caps/Num/Scroll s'allument automatiquement selon l'état de votre clavier
-- **Touches spéciales** : Print Screen, touches mortes (^), et AltGr sont correctement gérés
 
 ## 📁 Structure du projet
 
 ```
-keyboard-tester/
+gamepad-tester/
 ├── index.html              # Page principale
 ├── css/
 │   ├── main.css           # Styles généraux
-│   ├── keyboard.css       # Styles du clavier et des touches
-│   └── components.css     # Styles des composants (LED, modal, stats)
+│   ├── keyboard.css       # Styles du gamepad (boutons/sticks)
+│   └── components.css     # Styles des composants (stats, boutons)
 ├── js/
-│   ├── config.js          # Configuration globale (seuils, constantes)
-│   ├── layouts.js         # Définitions des layouts de clavier
-│   ├── keyboard.js        # Logique de détection et matching des touches
-│   ├── led-manager.js     # Gestion des LED de verrouillage
-│   ├── chattering.js      # Détection de double frappe
+│   ├── config.js          # Configuration globale (seuils)
+│   ├── gamepad.js         # Logique de détection gamepad
 │   ├── stats.js           # Gestion des statistiques
-│   ├── ui.js              # Gestion de l'interface (modal, reset)
+│   ├── ui.js              # Gestion de l'interface (reset)
 │   └── main.js            # Point d'entrée et initialisation
 ├── README.md              # Ce fichier
 └── LICENSE                # Licence GPL v3
@@ -66,13 +55,13 @@ keyboard-tester/
 
 - HTML5
 - CSS3 (Grid, Flexbox, Animations)
-- JavaScript ES6+ (Vanilla, pas de frameworks)
+- JavaScript ES6+ (Vanilla, API Gamepad)
 
 ## 🐛 Problèmes connus
 
-- **Print Screen** : Peut être capturé par le système d'exploitation avant le navigateur
-- **Touches mortes** : Certaines touches (^, ¨) peuvent ne pas s'activer immédiatement
-- **Layouts physiques** : Les codes de touches dépendent du layout physique du clavier, pas du layout logiciel
+- **Compatibilité navigateur** : L'API Gamepad nécessite un navigateur moderne (Chrome/Edge/Firefox récents)
+- **Activation** : Certains navigateurs demandent une interaction utilisateur avant de détecter une manette
+- **Mappings** : Les indices de boutons peuvent varier selon les manettes non standard
 
 ## 🤝 Contribuer
 
@@ -86,11 +75,10 @@ Les contributions sont les bienvenues !
 
 ### Idées de contributions
 
-- Ajouter plus de layouts (Dvorak, Colemak, etc.)
-- Améliorer la détection de layout physique
-- Ajouter l'export de rapport PDF
-- Support des claviers ergonomiques
-- Mode daltonien pour les couleurs
+- Ajouter un profil PlayStation/Switch
+- Afficher la vibration quand disponible
+- Ajouter un mode de calibration
+- Exporter un rapport de test
 
 ## 📜 Licence
 
@@ -98,14 +86,5 @@ Ce projet est sous licence GNU General Public License v3.0 - voir le fichier [LI
 
 ## 🙏 Remerciements
 
-- Inspiré par les outils de test de clavier en ligne
+- Inspiré par les outils de test de gamepad en ligne
 - Développé avec ❤️ pour la communauté open source
-
-## 📝 Changelog
-
-### v1.0 (2025-02-01)
-- Version initiale
-- Support AZERTY, QWERTY, BÉPO
-- Détection AltGr et chattering
-- LED virtuelles
-- Interface complète sans scroll
