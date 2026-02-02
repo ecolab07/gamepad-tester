@@ -1,113 +1,202 @@
 /**
- * Keyboard Tester - Keyboard Styles
- * 
- * Styles des touches, tailles, états (actif, testé)
- * Navigation, pavé numérique, flèches
- * 
+ * Gamepad Tester - Gamepad Styles
+ *
+ * Styles des boutons, sticks, d-pad et états
+ *
  * @license GPL-3.0
  */
 
-/* ==================== TOUCHES ==================== */
-
-.key {
-  min-width: 50px;
-  height: 50px;
-  border-radius: 6px;
+.pad-button {
+  position: absolute;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
   background: #16213e;
+  border: 2px solid #0f3460;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 13px;
-  border: 2px solid #0f3460;
-  user-select: none;
-  cursor: pointer;
+  text-transform: uppercase;
+  color: #e2e8f0;
   transition: all 0.15s ease;
-  padding: 4px;
-  text-align: center;
-  position: relative;
+  user-select: none;
 }
 
-.key:hover {
-  border-color: #4ecca3;
-}
-
-/* État actif (touche pressée) */
-.key.active {
+.pad-button.active {
   background: #4ecca3;
-  color: #000;
+  color: #081c15;
   border-color: #4ecca3;
+  box-shadow: 0 6px 14px rgba(78, 204, 163, 0.45);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(78, 204, 163, 0.4);
 }
 
-/* État testé (touche déjà utilisée) */
-.key.used {
+.pad-button.used {
   background: #2a5298;
   border-color: #3d6bb3;
 }
 
-/* ==================== TAILLES SPÉCIALES ==================== */
-
-.key.w-1-5 { min-width: 75px; }
-.key.w-1-75 { min-width: 87px; }
-.key.w-2 { min-width: 100px; }
-.key.w-2-25 { min-width: 112px; }
-.key.w-2-75 { min-width: 137px; }
-.key.w-6-25 { min-width: 312px; }
-
-/* Hauteur double (pour + et Enter du pavé numérique) */
-.key.h-2 { 
-  height: 108px;
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
+.shoulder {
+  width: 70px;
+  height: 34px;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: 600;
 }
 
-/* ==================== NAVIGATION ==================== */
+.lt {
+  top: 28px;
+  left: 90px;
+}
 
-.nav-section {
+.lb {
+  top: 70px;
+  left: 110px;
+}
+
+.rt {
+  top: 28px;
+  right: 90px;
+}
+
+.rb {
+  top: 70px;
+  right: 110px;
+}
+
+.menu {
+  width: 52px;
+  height: 32px;
+  border-radius: 12px;
+  font-size: 11px;
+  text-transform: none;
+}
+
+.back {
+  top: 140px;
+  left: 290px;
+}
+
+.guide {
+  top: 120px;
+  left: 334px;
+  width: 54px;
+  height: 54px;
+  border-radius: 18px;
+  font-size: 10px;
+}
+
+.start {
+  top: 140px;
+  right: 290px;
+}
+
+.dpad {
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  font-size: 16px;
+}
+
+.dpad.up {
+  left: 120px;
+  top: 190px;
+}
+
+.dpad.down {
+  left: 120px;
+  top: 286px;
+}
+
+.dpad.left {
+  left: 74px;
+  top: 238px;
+}
+
+.dpad.right {
+  left: 166px;
+  top: 238px;
+}
+
+.face {
+  width: 54px;
+  height: 54px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.face.y {
+  right: 120px;
+  top: 190px;
+}
+
+.face.a {
+  right: 120px;
+  top: 286px;
+}
+
+.face.x {
+  right: 166px;
+  top: 238px;
+}
+
+.face.b {
+  right: 74px;
+  top: 238px;
+}
+
+.stick {
+  width: 92px;
+  height: 92px;
+  border-radius: 50%;
+  background: #10162a;
+  border: 2px solid #263554;
   display: flex;
+  align-items: center;
+  justify-content: center;
   flex-direction: column;
-  gap: 8px;
+  gap: 4px;
 }
 
-.nav-row {
-  display: flex;
-  gap: 8px;
+.left-stick {
+  left: 220px;
+  top: 220px;
 }
 
-/* ==================== PAVÉ NUMÉRIQUE ==================== */
-
-.numpad {
-  display: grid;
-  grid-template-columns: repeat(4, 50px);
-  gap: 8px;
-  grid-auto-rows: 50px;
+.right-stick {
+  right: 220px;
+  top: 250px;
 }
 
-/* ==================== FLÈCHES ==================== */
-
-.arrow-cluster {
-  display: grid;
-  grid-template-columns: repeat(3, 50px);
-  gap: 8px;
-  margin-top: 8px;
+.stick-cap {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: #16213e;
+  border: 2px solid #0f3460;
 }
 
-.arrow-up { 
-  grid-column: 2; 
+.stick-dot {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #4ecca3;
+  opacity: 0.8;
+  transform: translate(0, 0);
+  transition: transform 0.05s linear;
 }
 
-.arrow-left { 
-  grid-column: 1; 
-  grid-row: 2; 
+.stick-label {
+  font-size: 10px;
+  color: #cbd5f5;
 }
 
-.arrow-down { 
-  grid-column: 2; 
-  grid-row: 2; 
+.stick.active .stick-cap {
+  border-color: #4ecca3;
+  box-shadow: inset 0 0 8px rgba(78, 204, 163, 0.5);
 }
 
-.arrow-right { 
-  grid-column: 3; 
-  grid-row: 2; 
+.stick.used .stick-cap {
+  background: #1e3a8a;
 }
